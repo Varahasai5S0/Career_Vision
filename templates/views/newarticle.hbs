@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>link}}
+        <style>
+          *{
+            box-sizing: border-box;
+          }
+          .form4 {
+    background-size: cover;
+}
+@media screen and (min-width: 480px) {
+  .cax{
+    margin-left:250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cax{
+    margin-left:0px;
+  }
+}
+.form-bg {
+   background: rgba(68, 68, 65, 0.77);
+    padding: 20px
+}
+
+
+.form {
+    background-color: white !important;
+    padding: 20px
+}
+
+.form-group {
+    margin-bottom: 20px
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0
+}
+
+.form-control {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid #61615e;
+    background: transparent;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s
+}
+
+button.btn {
+    display: block;
+    padding: 11px 32px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    margin: 30px 0px
+}
+
+.btn-blue {
+    background-color: #4285f4;
+    color: #fff;
+    border: 1px solid #4285f4
+}
+        </style>
+    </head>
+    <body>
+        {{>header}}
+        <div class="container px-3 pt-2">
+          <a href="/blog/" class="btn btn-info">All Articles<i class="fas fa-feather"></i></a>      
+             
+                <a href="/blog/article/my/" class="btn btn-info">My Articles<i class="fas fa-feather"></i></a>      
+                <h1 class="text-center font-weight-bold mt-2 art1 text-danger">New Blog<i class="fas fa-marker"></i></h1>
+
+</div>
+<div class="form4 cax my-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-2">
+                <div class="form-bg">
+                    <form class="form" action="/blog/new" method="POST">
+                        <div class="form-group"> 
+                          <input type="text" name="title" class="form-control" aria-required="true" id="title1" placeholder="Title" required> </div>
+                        <div class="form-group"> 
+                          <input type="text" class="form-control" aria-required="true" id="emailNine" placeholder="Description" name="description" required> </div>
+                        <div class="form-group">
+                          <h6>How to write ur blog.</h6>
+                          <p>Follow this instructions</p>
+                          <pre style="white-space:pre-wrap">Italic <i>'i'</i> : *Italic*  | Bold <b>'B'</b> : **Bold** |  Heading : #Heading  | Image : ![Image](https://directual.com/logo.png)  | Link : [Link](https://directual.com) | List : *List or -List  |  Horizontal rule : -------   <br>For syntax to this site:<a href="https://www.markdownguide.org/basic-syntax/">Link</a>
+                          </pre>
+                          
+                        </div>
+                        <div class="form-group"> 
+                          <textarea name="markdown" class="form-control" aria-required="true" rows="7" id="textarea" placeholder="Write Blog" required></textarea> </div> 
+                         <div class="form-group">
+                          <button type="submit" class="btn text-center btn-blue">Create</button>
+                          <a href="/blog" class="btn text-center btn-danger">Cancel</a>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ {{>footer}}
+<script>
+    var textarea = document.getElementById("textarea");
+var limit = 250;
+
+textarea.oninput = function() {
+  textarea.style.height = "";
+  textarea.style.height = Math.min(textarea.scrollHeight, limit) + "px";
+};
+</script>
+<script>
+  $(document).ready(function(){
+        $('#title1').on('blur',function(){
+            var title = $('#title1').val();
+            if(title=='') return
+            $.ajax({
+                url:"/titlecheck/",
+                type:"GET",
+                data:{
+                    'title':title,
+                },
+                success: function(response){ 
+                    if(response=='taken'){
+                        document.getElementById("demo").innerHTML = "modify title";
+                       document.getElementById("submit").disabled = true;
+                    }
+                    else if(response=='not_taken'){
+                      document.getElementById("demo").innerHTML = "";
+                      document.getElementById("submit").disabled = false;
+                     
+                  }
+                }
+
+            })
+        })
+    })
+</script>
+    </body>
+</html>

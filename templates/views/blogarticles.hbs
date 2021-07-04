@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>link}}
+        <style>
+          @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+             body {
+     font-family: 'Rubik', sans-serif;
+     height: 100% !important;
+     background-color: #3F51B5 !important
+ }
+
+ #star {
+     margin-left: -5px !important;
+     vertical-align: bottom !important;
+     opacity: 0.5
+ }
+
+ .more {
+     opacity: 0.5 !important
+ }
+
+ .btn:hover {
+     color: black !important
+ }
+
+ .vl {
+     margin: 8px !important;
+     width: 2px;
+     border-right: 1px solid #aaaaaa;
+     height: 25px
+ }
+
+ #plus {
+     opacity: 0.8
+ }
+
+ .card {
+     border-radius: 10px !important
+ }
+
+ .btn-outlined:active {
+     color: #FFF;
+     border-color: #fff !important
+ }
+
+ img {
+     cursor: pointer;
+     overflow: visible
+ }
+
+ .btn:focus,
+ .btn:active {
+     outline: none !important;
+     box-shadow: none !important
+ }
+
+ .container {
+     margin-top: 30px !important
+ }
+
+        </style>
+    </head>
+    <body>
+        {{>header}}
+       
+<div class="container px-3">
+                <a href="/blog/article/my/" class="btn btn-info">My Articles<i class="fas fa-feather"></i></a>      
+                <h1 class="text-center font-weight-bold mt-2 art1">Articles<i class="fas fa-drafting-compass"></i></h1>
+
+</div>
+                   
+         <div class="container">
+             {{#each post}}
+     <div class="card my-2 border-5 active pb-0 px-3">
+         <div class="card-body ">
+             <div class="row">
+                 <div class="col-12 ">
+                     <h3 class="card-title" style="font-family:'Kavoon';"><b>{{this.title}}</b></h3>
+                 </div>
+                 <div class="col">
+                     <h6 class="card-subtitle mb-2 text-muted">
+                         {{loud this.createdAt}}
+                   </h6>
+                   <h6 class="card-subtitle text-muted">
+                       Post by @{{this.name}}
+                   </h6>
+                 </div>
+             </div>
+         </div>
+         <div class="card-footer bg-white px-3 ">
+             <div class="row">
+                 <div class="col-md-auto ">
+                     <a href="/blog/{{this.slug}}">Read more <i class='fas fa-terminal'></i></a>
+                    <span class="ml-3 text-danger"><i class="fas fa-heart"></i>{{this.likes}} <small> likes</small></span>
+                 </div>
+             </div>
+         </div>
+     </div>
+     {{/each}}
+ </div>
+    </body>
+</html>

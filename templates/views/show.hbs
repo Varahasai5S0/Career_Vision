@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>link}}
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+        *{
+    font-family: 'Open Sans', sans-serif;
+}
+.toc-tab-box h2.acc-title {
+    color: #002d5b;
+    padding: 10px 0px;
+    padding-left: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s ease;
+    width: 100%;
+    float: left;
+}
+
+.toc-tab-box .acc-content {
+    background: #F3FAFD;
+    width: 100%;
+    margin-bottom: 4px;
+    float: left;
+    padding: 5px 30px 30px 40px;
+    color: #617693;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.accordionItemHeading .circle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    float: left;
+    background: #122C5F;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.accordionItemHeading .circle span {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 300;
+    float: left;
+    display: block;
+    margin: 6px 11px;
+}
+
+.accordionItemHeading h4 {
+    color: #389AD8;
+    font-size: 16px;
+    transition: all 0.5s ease;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 15px 0px;
+}
+
+.quest .answer {
+    border-left: 1px solid #58ABDF; 
+    background: #fff;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px 20px 10px 10px;
+}
+
+.acc-content .quest {
+    margin: 10px 0px;
+}
+
+@media (max-width: 768px) {
+    .toc-tab-box .acc-content{
+        padding:0px;
+    }
+
+}
+
+@media (max-width:480px){
+    .cax{
+        padding-left:0;
+    }
+    .cab{
+        padding-left:0px;
+    }
+}
+
+@media (min-width:480px){
+    .cax{
+        padding-left:150px;
+    }
+    .cab{
+        padding-left:400px;
+    }
+}
+
+        </style>
+    </head>
+    <body>
+        {{>header}}
+        <div class="container mt-2 mx-2">
+            <a href="/secret/" class="btn btn-info mt-2"><i class="fas fa-arrow-left"></i>Back/home</a>      
+   
+        </div>
+        <div class="container-fluid mx-4" style="width:90%">
+           <h2 class="text-info text-center mt-1 font-weight-bold he">{{post.title}}</h2>
+        <h5 class="text-dark my-2  cax">{{post.description}}</h5>
+        </div>
+
+<h1 class=" text-center text-dark mt-4" style="width:90%"><u>RoadMap</u></h1>
+<div class="container mt-4">
+        {{#each post.course}}
+        <div class="toc-tab-box">
+            <h2 class="acc-title">{{this.classname}}<i class="fa fa-pencil" aria-hidden="true"></i></h2>
+
+            <div class="acc-content">
+               
+                <div class="col-md-12">
+                    <div>
+                      <div class="container mt-3">
+                        {{{this.classdescription}}}
+                      </div>
+                      {{#each this.jobs}}
+                        <div class="quest">
+                            <div class="accordionItemHeading">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="circle"><span><i class="fas fa-pencil-alt"></i></span></div>
+                                        </td>
+                                        <td>
+                                            <h4 class="">{{this.jobtitle}}</h4>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="answer"  style="display: none;">
+                                {{{this.jobdescription}}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+
+                </div>
+            </div>
+            
+              
+        </div>
+{{/each}}
+<h6 class="mx-4 my-4"><b>Subjects to be Concentrated: </b>{{post.subject}}</h6>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" >
+(function ($) {
+
+    var allPanels = $('.accordion-section > .accordion-section-content, .toc-tab-box .acc-content, .toc-content.privacy-policy .acc-content').hide();
+    $('.accordion-section  .accordion-section-title, .toc-tab-box .acc-title, .toc-content.privacy-policy h2.acc-title, .acc-content .quest .accordionItemHeading h4').off().on('click', function (event) {
+        if (!$(this).hasClass('open')) {
+            allPanels.slideUp();
+            $(this).addClass('open');
+            $(this).next().slideDown();
+        } else {
+            allPanels.slideUp();
+            $(this).removeClass('open');
+        }
+    });
+    var insdeDivs = $('.acc-content .quest .answer').hide();
+    $('.acc-content .quest .accordionItemHeading h4').off().on('click', function (event) {
+        if (!$(this).hasClass('open')) {
+            insdeDivs.slideUp();
+            $(this).addClass('open');
+            $(this).parent().parent().parent().parent().parent().parent().find('.answer').slideDown();
+        } else {
+            insdeDivs.slideUp();
+            $(this).removeClass('open');
+        }
+    });
+})(jQuery);
+</script>
+     
+    </body>
+</html>

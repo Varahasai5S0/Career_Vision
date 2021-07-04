@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>link}}
+        <style>
+            body {
+    color: #ffffff
+}
+
+.box {
+    margin: auto
+}
+
+.card {
+    padding: 8%;
+    padding-top: 35px;
+    margin-top: 60px;
+    margin-bottom: 80px
+}
+
+textarea[name="message"] {
+    resize: none
+}
+
+#e-mail {
+    height: 45px
+}
+
+#message {
+    height: 120px
+}
+
+input.input-box,
+textarea.input-box {
+    background-color: #616161;
+    border: #616161;
+    color: #BDBDBD
+}
+
+input.input-box:focus,
+textarea.input-box:focus {
+    background-color: #000000;
+    color: #BDBDBD
+}
+
+.rm-border:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+form .form-control::-webkit-input-placeholder {
+    color: #9E9E9E
+}
+
+::-moz-placeholder {
+    color: #9E9E9E !important
+}
+
+input.btn-purple {
+    background-color: #5C6BC0;
+    color: #ffffff
+}
+        </style>
+    </head>
+    <body>
+        {{>header}}
+<div class="bg-light">
+    <div class="container">
+        <div class="row justify justify-content-center">
+            <div class="col-11 col-md-8 col-lg-6 col-xl-5">
+                <form action="/contact" method="POST">
+                    <div class="card bg-dark">
+                        <div class="row mt-0">
+                            <div class="col-md-12 ">
+                                <h4 class="">Suggest Us</h4>
+                                <p>Use the form below to share your questions, ideas, comments and feedback</p>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <div class="col-md-12 mb-0">
+                                <p class="mb-1">Topic</p> <input id="text" type="text" placeholder="Enter the subject" name="topic" class="form-control input-box rm-border" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 mb-2">
+                                <p class="mb-1">Message</p> <textarea id="message" type="text" placeholder="Enter your message" name="comment" id="textarea" required class="form-control input-box rm-border"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center mb-0">
+                            <div class="col-md-12 px-3"> <input type="submit" value="Submit" class="btn btn-block btn-purple rm-border"> 
+                             <a href="/" class="btn btn-block btn-danger rm-border">Leave</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+ {{>footer}}
+        <script>
+                var textarea = document.getElementById("textarea");
+var limit = 350;
+
+textarea.oninput = function() {
+  textarea.style.height = "";
+  textarea.style.height = Math.min(textarea.scrollHeight, limit) + "px";
+};
+
+            </script>
+    </body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>link}}
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,200italic);
+
+*{
+    box-sizing: border-box;
+}
+body {
+   background-color: #3F51B5 !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  
+}
+
+.container {
+  max-width: 90%;
+  margin:10px auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.quote-card {
+  background:floralwhite;
+  color: #222222;
+  padding: 20px;
+  padding-left: 40px;
+  box-shadow: 0 2px 4px rgba(34, 34, 34, 0.12);
+  position: relative;
+  overflow: hidden;
+  min-height: 60px;
+}
+.quote-card p {
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 98%;
+  text-align: justify;
+}
+.quote-card cite {
+  font-size: 18px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 200;
+  opacity: 0.9;
+}
+.quote-card:before {
+  font-family: Georgia, serif;
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 5em;
+  color: rgba(238, 238, 238, 0.8);
+  font-weight: normal;
+}
+.quote-card:after {
+  font-family: Georgia, serif;
+  content: "”";
+  position: absolute;
+  bottom: -110px;
+  line-height: 50px;
+  right: -32px;
+  font-size: 25em;
+  color: rgba(238, 238, 238, 0.8);
+  font-weight: normal;
+}
+@media (max-width: 640px) {
+  .quote-card:after {
+    font-size: 22em;
+    right: -25px;
+  }
+  .quote-card {
+  background: #fff;
+  color: #222222;
+  padding: 20px;
+  padding-left: 20px;
+  box-shadow: 0 2px 4px rgba(34, 34, 34, 0.12);
+  position: relative;
+  overflow: hidden;
+  min-height: 50px;
+}
+.quote-card p {
+  font-size: 16px;
+  line-height: 1;
+  max-width: 98%;
+  text-align: justify;
+}
+.quote-card cite {
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 200;
+  opacity: 0.9;
+}
+}
+.quote-card.blue-card {
+  background: #0078FF;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(34, 34, 34, 0.12), 0 2px 4px rgba(34, 34, 34, 0.24);
+}
+.quote-card.blue-card:before, .quote-card.blue-card:after {
+  color: #5FAAFF;
+}
+.quote-card.green-card {
+  background: #00970B;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(34, 34, 34, 0.12), 0 2px 4px rgba(34, 34, 34, 0.24);
+}
+
+
+
+@media screen and (min-width: 480px) {
+.desktop-2 {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  height: 350px;
+  mix-blend-mode: normal;
+  width: 100%;
+}
+.frame-1 {
+  align-items: flex-start;
+  background-image: url("https://images.unsplash.com/photo-1583162814461-3879bd80fd77?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dGhvdWdodHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  mix-blend-mode: normal;
+  padding: 10.2px 178.8px;
+  width: 100%;
+}
+.desktop-2 .learn-new {
+  height: 26px;
+  margin-top: 44px;
+  width: 284px;
+}
+.desktop-2 .my-story {
+  height: 228px;
+  margin-left: 0.25px;
+  mix-blend-mode: normal;
+  width: 295px;
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  box-sizing: border-box;
+}
+.screen a {
+  text-decoration: none;
+  display: contents;
+}
+
+}
+@media screen and (max-width: 480px) {
+  .desktop-2 {
+  align-items: flex-start;
+  background-image: url(https://anima-uploads.s3.amazonaws.com/projects/60c0df29c445eb8477e3598a/img/android---2@1x.png);
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  height: 540px;
+  mix-blend-mode: normal;
+  padding: 159.8px 35.8px;
+  width: 100%;
+}
+.desktop-2 .learn-new {
+  height: 26px;
+  margin-top: 44px;
+  width: 284px;
+}
+.desktop-2 .my-story {
+  align-self: flex-end;
+  height: 172px;
+  margin-right: 31.0px;
+  mix-blend-mode: normal;
+  width: 222px;
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  box-sizing: border-box;
+}
+.container-center-horizontal {
+  pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.container-center-horizontal > * {
+  pointer-events: auto;
+  flex-shrink: 0;
+}
+.screen a {
+  text-decoration: none;
+  display: contents;
+}
+
+}
+        </style>
+    </head>
+    <body>
+        {{>header}}
+  <div class="desktop-2 screen">
+    <div class="frame-1">
+      <img
+        class="my-story"
+        src="https://anima-uploads.s3.amazonaws.com/projects/60c0df29c445eb8477e3598a/img/my-story@2x.png"
+      />
+      <img
+        class="learn-new"
+        src="https://anima-uploads.s3.amazonaws.com/projects/60c0df29c445eb8477e3598a/img/learn-new@2x.png"
+      />
+    </div>
+  </div>
+  <div class="container px-3 pt-2">
+          <a href="/blog/" class="btn btn-info">All Articles<i class="fas fa-feather"></i></a>      
+             
+                <a href="/blog/article/my/" class="btn btn-info">My Articles<i class="fas fa-feather"></i></a>      
+</div>
+   <div class="container">
+     <div class="card mt-3 border-5 pt-2 active pb-0 px-1">
+         <div class="card-body quote-card blue">
+             <div class="row">
+              
+                 <div class="col-12 ">
+                     <h1 id="hello" name="hello" class="text-center font-weight-bold morn">{{post.title}}</h1>
+                 </div>
+                 <div class="col">
+                     <h4 class="card-subtitle ml-1 font-weight-bold">
+                         Desc : {{post.description}}
+                   </h4>
+                   <div class="card-subtitle my-4 mx-2 text-dark">
+                       {{{post.sanitizedHtml}}}
+                       
+                   </div>
+                   <br>
+                   <span>Like
+                     <button id="ax" class="btn btn-link text-danger"><i class="fas fa-heart"></i></button>
+                    <span id="demo">{{post.likes}}</span>
+                   </span>
+                   
+                   
+                   <span class="ml-2">
+                     <i class="fas fa-pencil-alt"></i>
+                     <i class="fas fa-pencil-alt"></i>
+                     <i class="fas fa-pencil-alt"></i>
+                   </span>
+                 </div>
+             </div>
+         </div>
+        </div>
+        </div>
+        <div class="container mt-3">
+           <h1 class="font-weight-bold text-light">Comments<i class="fas fa-comment"></i></h1> 
+	{{#if message}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+  {{/if}}
+  <div class="row">
+	    <div class="container">
+            {{#each comments}}
+            <blockquote class="quote-card">
+              <div>
+                {{this.comment}} 
+              </div>
+              <cite>
+                <span>
+                    <form action="/blog/comments/delete/{{this.id}}?_method=DELETE" method="POST">
+                      <button type="submit"  class="btn btn-link">delete</button>
+                      <span name="hello"><i class="fas fa-at"></i>{{this.user}}</span>
+               <span> <i class="fas fa-paragraph"></i>{{loud this.time}}</span>
+                   </form>
+                </span>
+               
+              </cite>
+            </blockquote>
+            {{/each}}
+    </div>
+    </div>
+    <div class="container">
+            <form action='/blog/comment/{{post.slug}}' method='POST'>
+    <label for="exampleFormControlTextarea1" class="font-weight-bold text-light">Give a comment:</label>
+    <textarea class="form-control" name="comm" id="textarea" required></textarea>
+  <button type="submit" class="btn btn-danger mt-2">Add</button>
+  </form>
+  </div>
+    </div>
+     {{>footer}}
+     <script>
+       $(document).ready(function(){
+        $('#ax').on('click',function(){
+            var a=document.getElementById("demo").innerText;
+            var b= parseInt(a)+1;
+           var c= document.getElementById("hello").innerText;
+            $.ajax({
+                url:"/likesadd/",
+                type:"GET",
+                data:{
+                    'abc': c,
+                     'likes':b,
+                    },
+                success: function(response){ 
+                    if(response){
+                        document.getElementById("demo").innerHTML =response;
+                        document.getElementById("ax").disabled = true;
+                    }
+                }
+
+            })
+        })
+    })
+     </script>
+    </body>
+</html>

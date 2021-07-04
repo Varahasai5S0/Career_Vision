@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>link}}
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.5;
+  background-color: #f1f3fb;
+  padding: 0 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0;
+}
+
+.card {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 425px;
+  background-color: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px 0 rgba(153, 153, 153, 0.25);
+  padding: 0.75rem;
+}
+
+.card-image {
+  border-radius: 8px;
+  overflow: hidden;
+  padding-bottom: 55%;
+  background-image: url("https://assets.codepen.io/285131/coffee_1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0 5%;
+  position: relative;
+}
+
+.card-heading {
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  right: 10%;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #735400;
+  line-height: 1.222;
+}
+.card-heading small {
+  display: block;
+  font-size: 0.75em;
+  font-weight: 400;
+  margin-top: 0.25em;
+}
+
+.card-form {
+  padding: 1.4rem 1rem 0;
+}
+
+.input {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  padding-top: 1rem;
+}
+
+.input-label {
+  color: #8597a3;
+  position: absolute;
+  top: 1.5rem;
+  transition: 0.25s ease;
+}
+
+.input-field {
+  border: 0;
+  z-index: 1;
+  background-color: transparent;
+  border-bottom: 2px solid #eee;
+  font: inherit;
+  font-size: 1.125rem;
+  padding: 0.25rem 0;
+}
+.input-field:focus, .input-field:valid {
+  outline: 0;
+  border-bottom-color: #6658d3;
+}
+.input-field:focus + .input-label, .input-field:valid + .input-label {
+  color:#6658d3;
+  transform: translateY(-1.5rem);
+}
+
+.action {
+  margin-top: 1rem;
+}
+
+.action-button {
+  font: inherit;
+  font-size: 1.25rem;
+  padding: 1em;
+  width: 100%;
+  font-weight: 500;
+  background-color: #6658d3;
+  border-radius: 6px;
+  color: #FFF;
+  border: 0;
+}
+.action-button:focus {
+  outline: 0;
+}
+
+.card-info {
+  padding: 1rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #8597a3;
+}
+.card-info a {
+  display: block;
+  color: #6658d3;
+  text-decoration: none;
+}
+    </style>
+  </head>
+    <body>
+        {{>navbar}}   
+<div class="container">
+	<div class="card">
+		<div class="card-image">	
+			<h2 class="card-heading">
+				Get started
+				<small>Let us create your account</small>
+			</h2>
+		</div>
+    <p class="text-primary">{{post}}</p>
+		<form class="card-form" action="/register" method="POST">
+			<div class="input">
+				<input type="text" class="input-field" name="firstname" pattern="[A-Za-z\s]+" required/>
+				<label class="input-label">Full name</label>
+			</div>
+						<div class="input">
+				<input type="email" class="input-field" id="need" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+				<label class="input-label">Email</label>
+			</div>
+            <span id="demo"></span>
+						<div class="input">
+				<input type="password" class="input-field" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" required/>
+				<label class="input-label">Password</label>
+			</div>
+       <span>Password should be of min 8 characters having aleast
+           1 uppercase Letter[A-Z],
+           1 lowercase letter[a-z],
+           1 digit [0-9] ,
+           1 special symbol [?,=,*,@]
+        </span>
+            <div class="input">
+				<input type="password" class="input-field" name="confirmpassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" required/>
+				<label class="input-label">Confirm Password</label>
+			</div>
+			<div class="action">
+				<button type="submit" id="submit">Get started</button>
+			</div>
+		</form>
+	</div>
+</div>
+ {{>footer}}
+<script>
+    $(document).ready(function(){
+        $('#need').on('blur',function(){
+            var email = $('#need').val();
+            if(email=='') return
+            $.ajax({
+                url:"/autocheck",
+                type:"GET",
+                data:{
+                    'email':email,
+                    },
+                success: function(response){ 
+                    if(response=='taken'){
+                        document.getElementById("demo").innerHTML = "Already registered";
+                   document.getElementById("submit").disabled = true;
+                    }
+                    else if(response=='not_taken'){
+                        document.getElementById("demo").innerHTML = "";
+                 document.getElementById("submit").disabled = false;
+                  }
+                }
+
+            })
+        })
+    })
+</script>
+ </body>
+</html>
